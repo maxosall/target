@@ -15,7 +15,7 @@ export const JobCard = ({jobTitle, logoUrl, compnay, location, date, ageRange}) 
       <p>{location}</p>
       <p className='flex justify-between'>{date} . {ageRange}</p>
     </div>
-    <button className=''>apply now</button>
+    <button className=''>view description </button>
   </div>
 
   )
