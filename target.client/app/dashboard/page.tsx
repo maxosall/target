@@ -2,8 +2,8 @@ import React from 'react'
 import {AiOutlineStar} from "react-icons/ai"
 const Dashboard = () => {
   return (
-    <div className='grid grid-cols-12 space-x-5'>
-      <div className='col-span-8'>
+    <div className='grid grid-cols-12 space-y-5 md:space-x-5 '>
+      <div className='col-span-12 md:col-span-8'>
 
 
         <div className='space-x-4 flex bg-white p-5 items-center '>
@@ -14,7 +14,7 @@ const Dashboard = () => {
 
 
       </div>
-      <div className='col-span-4'>
+      <div className='col-span-12 md:col-span-4'>
       <div className='space-x-4 flex bg-white p-5 items-center '>
           <span className=''>You have <span className='font-semibold'>(15 jobs)</span> to apply into it this week</span>
         </div>
