@@ -18,14 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={inter.className}>
-      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-      
-      <Navbar/>
+      <body className={`${inter.className} bg-slate-50`} >
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        
+        <Navbar/>
 
-      <main className="max-w-screen-xl mx-auto p-4 bg-slate-50">
-      {children}
-      </main>
+        <main className="max-w-screen-xl mx-auto p-4 ">
+          {children}
+        </main>
       </body>
     </html>
   )
