@@ -40,6 +40,7 @@ const Dashboard = () => {
             date='9 days ago' />
         </div>
 
+        {/* Job application history */}
         <div className="bg-white mb-5">
           <h3 className='font-semibold p-5'>List of jobs you have applied on
             <span className='font-extralight text-gray-500'> (4) jobs</span>
@@ -70,10 +71,10 @@ const Dashboard = () => {
               <tbody>
                 <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                   <th scope="row" className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    IOS Developer 
+                    IOS Developer
                   </th>
                   <td className="px-6 py-3">
-                  Apple
+                    Apple
                   </td>
                   <td className="px-6 py-3">
                     83
@@ -126,7 +127,7 @@ const Dashboard = () => {
                   </td>
                   <td className="px-6 py-3">3 days ago</td>
                 </tr>
-                
+
               </tbody>
             </table>
           </div>

@@ -12,7 +12,7 @@ export const JobCard = ({jobTitle, logoUrl, compnay, location, date, ageRange}) 
     </div>
 
     <div className=''>
-      <p className='flex space-x-4 items-center'>{compnay}</p>
+      <p className='flex space-x-4 items-center'>Company: <span className='font-semibold'> {compnay}</span></p>
       <p className='flex space-x-4 items-center'><IoLocationOutline /><span>{location}</span></p>
       <p className='flex justify-between  space-x-4 items-center'> 
         <span className='flex items-center '> 
