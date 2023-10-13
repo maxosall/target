@@ -1,5 +1,6 @@
 import React from 'react'
 import { SearchBox } from '../components/SearchBox'
+import { JobBar } from '../components/JobBar'
 const JobOpennings = () => {
   const filter_list = [
     {'id':1, 'contries': ['senegal', 'mali', 'france', 'usa', 'uk', 'egypt']},
@@ -22,9 +23,47 @@ const JobOpennings = () => {
 
         </div>
       </div>
-      <div className='col-span-12 md:col-span-9'>
-        <div className='p-5 bg-white'>
+      <div className='col-span-12 md:col-span-9 space-y-5'>
+        <div className='p-5 bg-white '>
           <SearchBox />
+        </div>
+        <div className=''>
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+            
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+            
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+
+          <JobBar jobTitle='.NET Development' 
+            posted_date='2 days ago' 
+            company='loop inc' 
+            location='senegal, dakar, parcel unit 2' 
+            minSalary='5400000' />
+
         </div>
       </div>
     </div>
