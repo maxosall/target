@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={`${inter.className} bg-slate-50`} >
+      <body className={`${inter.className} bg-slate-100`} >
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         
         <Navbar/>
