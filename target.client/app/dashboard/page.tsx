@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div className='col-span-12 md:col-span-8'>
 
         {/* header bar */}
-        <div className='space-x-4 flex bg-white p-5 items-center mb-5'>
+        <div className='space-x-4 flex flex-wrap bg-white p-5 items-center mb-5'>
           <AiOutlineStar className='h-8 w-8' />
           <h3 className='font-bold'>Jobs that may suit you fields</h3>
           <span className='text-gray-500'>(8 jobs)</span>
