@@ -19,6 +19,6 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.0.18"
+    "nuxt-icon": "^0.5.0"
   }
 }
