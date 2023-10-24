@@ -1,13 +1,10 @@
 <template>
-  <Navbar/>
-  <main>
-    <!-- <NuxtWelcome /> -->
-  </main>
-  <!-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> -->
+    <Navbar/>
+    
+    <NuxtLayout >
+      <main class="max-w-screen-xl mx-auto p-4 ">
+        <NuxtPage/>
+      </main>
+    </NuxtLayout>
 </template>
 
-
-
-<style>
-@import url("~/assets/css/style.css");
-</style>
