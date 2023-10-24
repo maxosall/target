@@ -5,9 +5,7 @@ export default defineNuxtConfig({
     '@': resolve(__dirname, '/')
   },
   css: ['~/assets/css/style.css'],
-  modules:[
-    'nuxt-icon'
-  ],
+  modules:['nuxt-icon', ],
   devtools: { enabled: true },
   postcss: {
     plugins: {

@@ -1,6 +1,9 @@
 
 <script setup>
 import {Icon } from '@iconify/vue'
+
+const route = useRoute()
+
 const links = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Job Opennings", href: "/job-opennings" },
@@ -46,8 +49,12 @@ let isCollapsed = ref(false)
         <ul
           class="w-full flex flex-col font-normal text-sm p-4 md:p-0 mt-4 rounded-md bg-white md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li v-for="link in links"
-            class="text-gray-900 block pl-3 pr-4 py-2 rounded-md hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-            <NuxtLink :to="link.href" >{{ link.label }}</NuxtLink>
+            >
+            <NuxtLink :to="link.href" 
+            :class="[link.href === $route.path
+              ? 'text-blue-900 font-medium underline-offset-8 underline transition-all'
+              : 'text-gray-900 transition-all', 
+              'block pl-3 pr-4 py-2 rounded-md hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700']">{{ link.label }}</NuxtLink>
           </li>
         </ul>
       </div>
