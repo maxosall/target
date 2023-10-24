@@ -57,6 +57,88 @@ import { Icon } from "@iconify/vue";
           />
         
       </div>
+
+      <!-- {/* Job application history */} -->
+        <div class="bg-white mb-5">
+          <h3 class="font-semibold p-5 rounded-sm">
+            List of jobs you have applied on
+            <span class="font-extralight text-gray-500"> (4) jobs</span>
+          </h3>
+
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    Job Title
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Company
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Applicans
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Status
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Application Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    IOS Developer
+                  </th>
+                  <td class="px-6 py-3">Apple</td>
+                  <td class="px-6 py-3">83</td>
+                  <td class="px-6 py-3">rejected</td>
+                  <td class="px-6 py-3">2 weeks ago </td>
+                </tr>
+                <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    AI Developer
+                  </th>
+                  <td class="px-6 py-3"> OpenAI</td>
+                  <td class="px-6 py-3">350</td>
+                  <td class="px-6 py-3"> Noticed</td>
+                  <td class="px-6 py-3"> 9 days ago </td>
+                </tr>
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Pianist
+                  </th>
+                  <td class="px-6 py-3">MurderInc</td>
+                  <td class="px-6 py-3">30</td>
+                  <td class="px-6 py-3">---</td>
+                  <td class="px-6 py-3">1 hour ago </td>
+                </tr>
+                <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Photographer
+                  </th>
+                  <td class="px-6 py-3">Pink Moon</td>
+                  <td class="px-6 py-3">12</td>
+                  <td class="px-6 py-3">accepted</td>
+                  <td class="px-6 py-3">3 days ago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
     <div class="col-span-12 md:col-span-4 space-y-5">
         <div class="space-x-4 flex bg-white p-5 items-center ">

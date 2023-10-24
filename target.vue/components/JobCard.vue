@@ -3,7 +3,7 @@
       <!-- card header  -->
       <div class='flex items-center justify-between text-sm'>
         <h3 class='font-semibold '>{{jobTitle}}</h3>
-        <img class='rounded-full' src={logoUrl} />
+        <img class='rounded-full' :src="logoUrl" />
       </div>
 
       <div class='text-sm'>
