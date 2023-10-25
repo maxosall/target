@@ -1,7 +1,8 @@
 <template lang="">
   <div class="max-w-5xl mx-auto flex items-center justify-center">
-      <div class="max-w-sm flex flex-1 flex-col bg-white p-8">
+      <div class="max-w-sm flex flex-1 flex-col bg-white p-8 rounded-lg  ring-1 ring-slate-900/5 shadow-l">
         <h3 class="font-extrabold text-md text-center p-5">Sign up</h3>
+        <TowFactorAuth />
         <InputField
           label="Email"
           type="email"
@@ -22,7 +23,7 @@
         />
 
         <button
-          class="bg-gray-700 hover:bg-gray-800 font-semibold text-sm text-white rounded-md p-2"
+          class="bg-gray-700 hover:bg-gray-800 font-semibold text-sm text-white rounded-md p-2.5"
           type="button"
         >
           Sign up
