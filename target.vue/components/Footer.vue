@@ -42,7 +42,7 @@
         </div>
       </div>
       <!-- right side -->
-      <div class="col-span-12 md:col-span-6">
+      <div class="col-span-12 md:col-span-6 hidden md:block">
         <h3 class="text-sm font-semibold">Job fields</h3>
 
       </div>
