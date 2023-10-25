@@ -6,7 +6,12 @@
         <NuxtPage/>
       </main>
 
-      <Footer/>
+      
     </NuxtLayout>
+    <Footer v-if="['/account/login', '/account/signup'].includes($route.path) === false " />
 </template>
+<script setup>
+const route = useRoute()
+
+</script>
 

@@ -58,7 +58,7 @@ import { Icon } from "@iconify/vue";
 const links = [
   { label: "who are we?", href: "/about-us" },
   { label: "common questions", href: "/common-questions" },
-  { label: "search for job opennings", "/href": "job-opennings" },
+  { label: "job opennings", href: "/job-opennings" },
   { label: "the website map", href: "/the-website-map" },
   { label: "customers feedback", href: "/customers-feedback" },
   { label: "our partners", href: "/our-partners" },
