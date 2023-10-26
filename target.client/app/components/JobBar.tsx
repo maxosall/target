@@ -1,7 +1,14 @@
 import React from 'react'
 import { Badge } from './Badge'
 
-export const JobBar = ({jobTitle, posted_date, company, location, minSalary}) => {
+interface IJobBarProps{
+  jobTitle:string 
+  posted_date: string
+  company: string
+  location: string
+  minSalary: string
+}
+export const JobBar = ({jobTitle, posted_date, company, location, minSalary}: IJobBarProps) => {
   return (
     <div className='p-5 bg-white w-full flex justify-between border-b'>
       <div className='space-y-2'>
@@ -12,12 +19,12 @@ export const JobBar = ({jobTitle, posted_date, company, location, minSalary}) =>
         </div>
 
         <div className='flex'>
-          <h5 className='font-medium'> {company} </h5> . 
+          <h5 className='font-medium text-sm'> {company} </h5> . 
           <span> {location}</span>
         </div>
 
         <div className="flex">
-          <p className='font-medium'>Basic Salary: </p>
+          <p className='font-medium text-sm'>Basic Salary: </p>
           <span>{minSalary}</span>
         </div>
       </div>

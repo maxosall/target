@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+"use client";
+import { ReactNode, useEffect, useState } from "react"
 
 interface IAccordionProrps{
   header: string
-  children: React.ReactNode[]
+  children?: ReactNode
   className?: string
 }
 export const Accordion = ({className, header, children}: IAccordionProrps) => {
@@ -13,11 +14,11 @@ export const Accordion = ({className, header, children}: IAccordionProrps) => {
 
   return (
     <div>
-      <h3  onClick={() => setIsActive(!isActive)} className={`p-5 text-sm font-semibold cursor-pointer border-b ${className}`}>
+      <h3  onClick={() => setIsActive(!isActive)} className={`p-4 text-sm font-semibold cursor-pointer border-b ${className}`}>
         {header}</h3>
-      <div className={`p-5 ${toggleAccordion()}`}>
-        { children }
-      </div>
+        <div className={`p-5 ${toggleAccordion()}`}>
+          { children }
+        </div>
     </div>
   )
 

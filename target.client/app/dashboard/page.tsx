@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { JobCard } from "../components/JobCard";
@@ -6,11 +5,11 @@ import { Accordion } from "../components/Accordion";
 
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-12 space-y-5 md:space-y-0 md:space-x-5 ">
+    <div className="grid grid-cols-12 space-y-5 md:space-y-0 md:space-x-5">
       <div className="col-span-12 md:col-span-8">
         {/* header bar */}
-        <div className="space-x-4 flex flex-wrap bg-white p-5 items-center mb-5">
-          <AiOutlineStar className="h-8 w-8" />
+        <div className="space-x-4 flex flex-wrap bg-white p-5 items-center mb-5 rounded-sm">
+          <AiOutlineStar className="h-6 w-6 text-red-500" />
           <h3 className="font-semibold text-black text-sm">
             Jobs that may suit you fields
           </h3>
@@ -18,9 +17,8 @@ const Dashboard = () => {
         </div>
 
         {/* card deck */}
-        <div className="grid md:grid-cols-2 gap-5 mb-5">
-          <JobCard
-            jobTitle="Data Entry"
+        <div className="grid md:grid-cols-2 gap-5 mb-5 rounded-sm">
+          <JobCard jobTitle="Writer"
             logoUrl="https://unsplash.it/40/40"
             company="toxify-inc"
             location="cairo, ain shams"
@@ -28,8 +26,15 @@ const Dashboard = () => {
             date="9 days ago"
           />
 
-          <JobCard
-            jobTitle="Data Entry"
+          <JobCard jobTitle="Marketing"
+            logoUrl="https://unsplash.it/40/40"
+            company="loop"
+            location="cairo, ain shams"
+            ageRange="18-35"
+            date="9 days ago"
+          />
+
+          <JobCard jobTitle="Busness Manager"
             logoUrl="https://unsplash.it/40/40"
             company="toxify-inc"
             location="cairo, ain shams"
@@ -37,16 +42,7 @@ const Dashboard = () => {
             date="9 days ago"
           />
 
-          <JobCard
-            jobTitle="Data Entry"
-            logoUrl="https://unsplash.it/40/40"
-            company="toxify-inc"
-            location="cairo, ain shams"
-            ageRange="18-35"
-            date="9 days ago"
-          />
-          <JobCard
-            jobTitle="Data Entry"
+          <JobCard jobTitle="Engineer"
             logoUrl="https://unsplash.it/40/40"
             company="toxify-inc"
             location="cairo, ain shams"
@@ -57,7 +53,7 @@ const Dashboard = () => {
 
         {/* Job application history */}
         <div className="bg-white mb-5">
-          <h3 className="font-semibold p-5">
+          <h3 className="font-semibold p-5 rounded-sm">
             List of jobs you have applied on
             <span className="font-extralight text-gray-500"> (4) jobs</span>
           </h3>
@@ -141,16 +137,32 @@ const Dashboard = () => {
       <div className="col-span-12 md:col-span-4 space-y-5">
         <div className="space-x-4 flex bg-white p-5 items-center ">
           <span className="">
-            You have <span className="font-semibold">(15 jobs)</span> to apply
-            into it this week
+            You have <span className="font-semibold">(15 jobs)</span> to apply into it this week
           </span>
         </div>
 
-        <div className="space-x-4 bg-white ">
-          <Accordion className="" header="this text don't panic">
-            <p>tesr</p>
-            <img src="" alt="" />
-            <button>submit</button>
+        <div className=" bg-white ">
+          <Accordion header="this text don't panic">
+            
+            <div className="grid grid-cols-12 gap-4">
+              <figure className="col-span-4 rounded-md bg-slate-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-red-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-blue-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-green-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-yellow-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-stone-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-orange-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-lime-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+              <figure className="col-span-4 rounded-md bg-indigo-400 w-full h-16 ">&<img src="https://unsplash.it" alt="" /></figure>
+            </div>
+          </Accordion>
+
+          <Accordion header="Fist Question" >
+            <div></div>
+          </Accordion>
+
+          <Accordion header="Fist Question" >
+            <div></div>
           </Accordion>
         </div>
       </div>

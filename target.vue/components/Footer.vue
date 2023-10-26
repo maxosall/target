@@ -46,7 +46,8 @@
         <h3 class="text-sm font-semibold">Job fields</h3>
 
       </div>
-      <p class="text-xs font-medium text-gray-800 col-span-full">all copyrights belong to <NuxtLink class="text-blue-700 font-semibold underline underline-offset-2">target</NuxtLink> 2023</p>
+      <p class="text-xs font-medium text-gray-800 col-span-full">all copyrights belong to
+         <NuxtLink to="/" class="text-blue-700 font-semibold underline underline-offset-2">target</NuxtLink> 2023</p>
     </div>
   </footer>
 

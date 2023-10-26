@@ -12,7 +12,7 @@ interface IJobCardProps {
 }
 export const JobCard = ({jobTitle, logoUrl, company, location, date, ageRange}: IJobCardProps) => {
   return (
-    <div  className="block space-y-4 md:max-w-md p-6 bg-white border border-gray-200 rounded-md shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div  className="block space-y-4 md:max-w-md p-6 bg-white border border-gray-200 rounded-sm shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       {/* card header */}
       <div className='flex items-center justify-between text-sm'>
         <h3 className='font-semibold '>{jobTitle}</h3>
@@ -20,7 +20,7 @@ export const JobCard = ({jobTitle, logoUrl, company, location, date, ageRange}: 
       </div>
 
       <div className='text-sm'>
-        <p className='flex space-x-4 items-center'>Company: <span className='font-semibold'> {company}</span></p>
+        <p className='flex space-x-4 items-center'>Company: <span className='font-semibold'> {' '} {company}</span></p>
         <p className='flex space-x-4 items-center'><IoLocationOutline /><span>{ location}</span></p>
         <p className='flex justify-between  space-x-4 items-center'> 
           <span className='flex items-center '> 

@@ -14,11 +14,7 @@ const JobOpennings = () => {
         <div className='bg-white'>
           <h3 className='font-semibold p-5 text-gray-700'>Enhence your search</h3>
           <aside className='px-5'>
-            <ul>
-              {/* {filter_list.map(f_list => <li key={f_list.id}>
-                
-              </li>)} */}
-            </ul>
+            
           </aside>
 
         </div>
@@ -34,9 +30,9 @@ const JobOpennings = () => {
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
             
-          <JobBar jobTitle='.NET Development' 
-            posted_date='2 days ago' 
-            company='loop inc' 
+          <JobBar jobTitle='Writer' 
+            posted_date='6 days ago' 
+            company='the sun' 
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
             
@@ -46,9 +42,9 @@ const JobOpennings = () => {
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
 
-          <JobBar jobTitle='.NET Development' 
+          <JobBar jobTitle='Marketing' 
             posted_date='2 days ago' 
-            company='loop inc' 
+            company='BMC' 
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
 
@@ -58,12 +54,11 @@ const JobOpennings = () => {
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
 
-          <JobBar jobTitle='.NET Development' 
+          <JobBar jobTitle='Securtary Exsecutive' 
             posted_date='2 days ago' 
             company='loop inc' 
             location='senegal, dakar, parcel unit 2' 
             minSalary='5400000' />
-
         </div>
       </div>
     </div>
