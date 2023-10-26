@@ -15,14 +15,15 @@ let isCollapsed = ref(false)
 
 </script>
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-gray-900 border-b mb-5">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <nav class="bg-white  border-gray-200 dark:bg-gray-900 border-b mb-5">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
       <NuxtLink to="https://flowbite.com/" 
-        class="flex font-extrabold text-red-500 hover:text-red-700 justify-center space-x-4 items-center">
+        class="flex font-bold text-red-500 hover:text-red-700 justify-center space-x-2 items-center">
         <Icon icon="mdi:target" class="h-9 w-9 self-center "></Icon>
         
-        <span class="self-center text-2xl font-extrabold whitespace-nowrap dark:text-white">Flowbite</span>
+        <span class="self-center text-lg font-extrabold whitespace-nowrap dark:text-white">target</span>
       </NuxtLink>
+
       <div class="flex items-center space-x-2 md:order-2">
         <NuxtLink
             to="/account/signup"
