@@ -6,11 +6,7 @@
           <TowFactorAuth />
 
 
-          <div class="flex items-center">
-            <p class="flex-1 border-b"></p>
-            <span class="px-6">or</span>
-            <p class="flex-1 border-b"></p>
-          </div>
+          <Divider />
 
 
           <InputField
@@ -29,7 +25,7 @@
             placeholder="reenter password"
             htmlFor="signup_confirm_password" />
           <button
-            class="bg-gray-700 hover:bg-gray-800 font-semibold text-sm text-white rounded-md p-2.5"
+            class="bg-gray-800 hover:bg-gray-900 font-semibold text-sm text-white rounded-md p-2.5"
             type="button" >Sign up</button>
         </div>
 

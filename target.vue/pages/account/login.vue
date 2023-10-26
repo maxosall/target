@@ -6,11 +6,7 @@
         <h3 class="font-extrabold text-md text-center p-5">Login with</h3>
         <TowFactorAuth />
 
-        <div class="flex items-center">
-          <p class="flex-1 border-b"></p>
-          <span class="px-6">or</span>
-          <p class="flex-1 border-b"></p>
-        </div>
+        <Divider/>
 
         <InputField
           label="Email"
@@ -26,14 +22,14 @@
         <div class="flex justify-between mb-4">
           <div>
             <input type="checkbox" name="" id="rmbr_me" />
-            <label htmlFor="rmbr_me"> Remmber me</label>
+            <label for="rmbr_me"> Remmber me</label>
           </div>
           <NuxtLink
             class="font-semibold text-sm text-red-600 hover:underline"
             to="/" >forgot password?</NuxtLink>
         </div>
         <button
-          class="bg-gray-700 hover:bg-gray-800 font-medium text-sm text-white rounded-md p-2.5"
+          class="bg-gray-800 hover:bg-gray-900 font-medium text-sm text-white rounded-md p-2.5"
           type="button">
           Login
         </button>

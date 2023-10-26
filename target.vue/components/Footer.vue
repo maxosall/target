@@ -63,7 +63,7 @@ const links = [
   { label: "the website map", href: "/the-website-map" },
   { label: "customers feedback", href: "/customers-feedback" },
   { label: "our partners", href: "/our-partners" },
-  { label: "contact us", href: "/our-partners" },
+  { label: "contact us", href: "/contact-us" },
   { label: "our partners", href: "/contact-us" },
   { label: "browse companies", href: "/browse-companies" },
   { label: "policy aggrements", href: "/policy-aggrements" },
