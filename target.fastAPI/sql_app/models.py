@@ -10,103 +10,108 @@ from datetime import datetime
 class User(Base):
   __tablename__ = 'users'
 
-  id = Column(Integer, primary_key=True, index=True)
-  email = Column(String, unique=True, index=True)
-  hashed_password = Column(String)
-  is_active = Column(Boolean)
-  group_id = Column(Integer, ForeignKey('groups.id')) 
-  group = relationship('Group',  back_populates='group')
-  profile_id = Column(Integer, ForeignKey('profiles.id'))
-  profile = relationship('Profile')
-  create_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+  id = Column(Integer, primary_key=True, nullable=False)
+  email = Column(String, unique=True, nullable=False)
+  password = Column(String, nullable=False)
+  # group = relationship('Group', back_populates='users') 
+  # profile = relationship("Profile", uselist=False, back_populates="user")
+
+  created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=func.now())
   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
+  
 
 class Group(Base):
   __tablename__ = 'groups'
   id = Column(Integer, primary_key=True, index=True)
   name = Column(String, nullable=False)
   description = Column(String, nullable=True)
-  users = relationship('user', back_populates='user')
+  # user_id = Column(Integer, ForeignKey('users.id'))
+  # users=relationship('User', back_populates='group')
 
-class Permission(Base):
-  __tablename__ = 'permissions'
-  id = Column(Integer, primary_key=True, index=True)
+  create_at = Column(TIMESTAMP(timezone=True), nullable=False, default=text('now()'))
+  updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
+
+# class Permission(Base):
+#   __tablename__ = 'permissions'
+#   id = Column(Integer, primary_key=True, index=True)
 
 class Profile(Base):
   __tablename__ = "profiles"
   id= Column(Integer, primary_key=True)
-  first_name = Column(String(150))
-  last_name = Column(String(150))
+  first_name = Column(String(150), nullable=False)
+  last_name = Column(String(150), nullable=False)
   phone_number = Column(String(150), unique=True, nullable=False)
   address = Column(String)
   resume = Column(String)
-  user_id = Column(Integer, ForeignKey('users.id'))
 
-  user = relationship('user')
+  # user_id = Column(Integer, ForeignKey("users.id"))
+  # user = relationship("User", back_populates="profile")
 
-class Role(Base):
-  __tablename__ = 'roles'
-  id = Column(Integer, primary_key=True, index=True)
-  name = Column(String, nullable=False)
-  description = Column(String, nullable=True)
-  permissions = relationship('Permission', secondary='role_permission', back_populates='roles')
+#   # user = relationship('user')
+#   user = relationship('User', back_populates='profile')
+# class Role(Base):
+#   __tablename__ = 'roles'
+#   id = Column(Integer, primary_key=True, index=True)
+#   name = Column(String, nullable=False)
+#   description = Column(String, nullable=True)
+#   permissions = relationship('Permission', secondary='role_permission', back_populates='roles')
 
-class RolePermission(Base):
-  __tablename__ = 'role_permission'
-  role_id = Column(Integer, ForeignKey('roles.id'), primary_key=True)
-  permission_id = Column(Integer, ForeignKey('permissions.id'), primary_key=True)
-
-
-class Country(Base):
-  __tablename__ = "countries"
-
-  id = Column(Integer, primary_key=True)
-  inial = Column(String(2))
-  country_name = Column(String)
-
-class JobType( enum.Enum):  
-  FULLTIME = "fulltime"
-  PARTTIME = "parttime"
-  CONTRACT = "contract"
-
-class SalaryType( enum.Enum):  
-  DAILY = "daily"
-  WEEKLY = "weekly"
-  MONTHLY = "monthly"
+# class RolePermission(Base):
+#   __tablename__ = 'role_permission'
+#   role_id = Column(Integer, ForeignKey('roles.id'), primary_key=True)
+#   permission_id = Column(Integer, ForeignKey('permissions.id'), primary_key=True)
 
 
-class Job(Base):
-  __tablename__ = 'jobs'
+# class Country(Base):
+#   __tablename__ = "countries"
+
+#   id = Column(Integer, primary_key=True)
+#   inial = Column(String(2))
+#   country_name = Column(String)
+
+# class JobType( enum.Enum):  
+#   FULLTIME = "fulltime"
+#   PARTTIME = "parttime"
+#   CONTRACT = "contract"
+
+# class SalaryType( enum.Enum):  
+#   DAILY = "daily"
+#   WEEKLY = "weekly"
+#   MONTHLY = "monthly"
+
+
+# class Job(Base):
+#   __tablename__ = 'jobs'
     
-  id = Column(Integer, primary_key=True, index=True)
-  title = Column(String(150), nullable=False)
-  decription = Column(String, nullable=False)
-  min_salary = Column(Float, nullable=True)
-  max_salary = Column(Float, nullable=True)
+#   id = Column(Integer, primary_key=True, index=True)
+#   title = Column(String(150), nullable=False)
+#   decription = Column(String, nullable=False)
+#   min_salary = Column(Float, nullable=True)
+#   max_salary = Column(Float, nullable=True)
    
-  job_type = Column(Enum(JobType), default=JobType.FULLTIME)
-  salary_type = Column(Enum(SalaryType))
+#   job_type = Column(Enum(JobType), default=JobType.FULLTIME)
+#   salary_type = Column(Enum(SalaryType))
 
-  create_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
-  updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
-
-
-class JobField(Base):
-  __tablename__ = 'jobfields'
-
-  id = Column(Integer, primary_key=True, index=True)
-  title = Column(String, nullable=False)
+#   create_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+#   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
 
 
-class Application(Base):
-  """docstring for Application"""
-  __tablename__ = "applications"
-  id = Column(Integer, primary_key=True, index=True)
-  user_id = Column(Integer, ForeignKey('users.id'))
-  users = relationship('user', back_populates='users')
-  status = Column(Boolean, nullable=True)
-  job_id = Column(Integer, ForeignKey('jobs.id'))
-  jobs = relationship('job', back_populates='jobs')
+# class JobField(Base):
+#   __tablename__ = 'jobfields'
+
+#   id = Column(Integer, primary_key=True, index=True)
+#   title = Column(String, nullable=False)
+
+
+# class Application(Base):
+#   """docstring for Application"""
+#   __tablename__ = "applications"
+#   id = Column(Integer, primary_key=True, index=True)
+#   user_id = Column(Integer, ForeignKey('users.id'))
+#   users = relationship('user', back_populates='users')
+#   status = Column(Boolean, nullable=True)
+#   job_id = Column(Integer, ForeignKey('jobs.id'))
+#   jobs = relationship('job', back_populates='jobs')
 
 
 

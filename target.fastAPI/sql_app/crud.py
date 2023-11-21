@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .database import SessionLocal, engine
-
+from datetime import date
 from . import models, schema
 
 
@@ -15,7 +15,8 @@ def get_user(db: Session, user_id: int):
 
 def create_user(db: Session, user: schema.UserCreate):
   fake_hashed_password = user.password + "notreallyhashed"
-  new_user = models.User(email=user.email, hashed_password=fake_hashed_password)
+  user.password=fake_hashed_password
+  new_user = models.User(**user.dict())
   db.add(new_user)
   db.commit()
   db.refresh(new_user)
