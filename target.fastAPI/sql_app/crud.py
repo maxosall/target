@@ -1,8 +1,6 @@
 from sqlalchemy.orm import Session
 from .database import SessionLocal, engine
 from datetime import date
-
-
 from . import models, schema, utils
 
 
