@@ -13,12 +13,13 @@ class User(Base):
   id = Column(Integer, primary_key=True, nullable=False)
   email = Column(String, unique=True, nullable=False)
   password = Column(String, nullable=False)
-  # group = relationship('Group', back_populates='users') 
-  # profile = relationship("Profile", uselist=False, back_populates="user")
-
+  jobs = relationship('Job', back_populates='users')
   created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=func.now())
   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
   
+  # group = relationship('Group', back_populates='users') 
+  # profile = relationship("Profile", uselist=False, back_populates="user")
+
 
 class Group(Base):
   __tablename__ = 'groups'
@@ -80,20 +81,20 @@ class Profile(Base):
 #   MONTHLY = "monthly"
 
 
-# class Job(Base):
-#   __tablename__ = 'jobs'
+class Job(Base):
+  __tablename__ = 'jobs'
     
-#   id = Column(Integer, primary_key=True, index=True)
-#   title = Column(String(150), nullable=False)
-#   decription = Column(String, nullable=False)
-#   min_salary = Column(Float, nullable=True)
-#   max_salary = Column(Float, nullable=True)
-   
-#   job_type = Column(Enum(JobType), default=JobType.FULLTIME)
-#   salary_type = Column(Enum(SalaryType))
-
-#   create_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
-#   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
+  id = Column(Integer, primary_key=True, index=True)
+  title = Column(String(150), nullable=False)
+  decription = Column(String, nullable=False)
+  min_salary = Column(Float, nullable=True)
+  max_salary = Column(Float, nullable=True)
+  user_id = Column(Integer, ForeignKey("users.id"))
+  # job_type = Column(Enum(JobType), default=JobType.FULLTIME)
+  # salary_type = Column(Enum(SalaryType))
+  users = relationship("User", back_populates="jobs")
+  created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=func.now())
+  updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
 
 
 # class JobField(Base):

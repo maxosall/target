@@ -1,6 +1,5 @@
 from typing import List
 from fastapi import Depends, status, HTTPException, APIRouter
-from http.client import HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
 from .. import crud, schema

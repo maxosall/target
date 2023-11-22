@@ -21,4 +21,4 @@ def login(user_credntials:schema.UserLogin, db: Session= Depends(database.get_db
                         detial=f"invalid credentials")
   
   access_token = oauth2.create_access_token(data= {"user_id":db_user.id})
-  return {"token":access_token, "token_type":"bearer"}
+  return {"access_token":access_token, "token_type":"bearer"}

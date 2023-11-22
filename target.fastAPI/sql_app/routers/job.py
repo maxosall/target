@@ -9,11 +9,12 @@ router =APIRouter(
   tags=["jobs"]
 )
 
-@router.post("/")
-#def create_post(payload: dict = Body(...)):
-async def create_post(
-          current_user_id:int= Depends(oauth2.get_current_user)):
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schema.JobOutput)
+def create_job(job: schema.JobCreate, db: Session=Depends(get_db),
+          current_user:int= Depends(oauth2.get_current_user)):
   
-
-  print(current_user_id)
-  return {"title": "maxo sall"}
+  new_job= models.Job(user_id= current_user.id,**job.dict())
+  db.add(new_job)
+  db.commit()
+  db.refresh(new_job)
+  return new_job
