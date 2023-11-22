@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from . import models, schema
-from .database import engine
-from . routers import users, jobs
+from sql_app import models
+from sql_app.database import engine
+from sql_app.routers import users, jobs
 
 models.Base.metadata.create_all(bind=engine)
 
