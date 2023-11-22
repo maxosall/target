@@ -2,6 +2,12 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 
+class Token(BaseModel):
+  access_token: str
+  token_type:str
+
+class TokenDta(BaseModel):
+  id: Optional[str]  = None
 
 class Post(BaseModel):
   title: str
