@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from sql_app import models
 from sql_app.database import engine
-from sql_app.routers import users, jobs
+from sql_app.routers import user, job, auth
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -11,6 +11,6 @@ app = FastAPI()
 def test():
   return {'data':'this test 123'}
 
-app.include_router(users.router)
-app.include_router(jobs.router)
-
+app.include_router(user.router)
+app.include_router(job.router)
+app.include_router(auth.router)

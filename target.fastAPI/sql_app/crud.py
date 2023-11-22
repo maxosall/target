@@ -21,3 +21,6 @@ def create_user(db: Session, user: schema.UserCreate):
   db.commit()
   db.refresh(new_user)
   return new_user
+
+def login(db: Session, user_crdentials: schema.UserLogin):
+  db.query(models.User).filter(models.User.email == user_crdentials.email).first()

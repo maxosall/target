@@ -13,7 +13,9 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
   password: str
-  
+
+class UserLogin(UserCreate):
+  pass
 class UserOutput(UserBase):
   created_at: Optional[datetime] = None
   updated_at: Optional[datetime] = None
