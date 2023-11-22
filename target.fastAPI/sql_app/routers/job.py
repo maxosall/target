@@ -11,9 +11,9 @@ router =APIRouter(
 
 @router.post("/")
 #def create_post(payload: dict = Body(...)):
-async def create_post(new_post: schema.Post,
-          get_current_user:int= Depends(oauth2.get_current_user)):
-  new_post.title = 'new tutorial'
+async def create_post(
+          current_user_id:int= Depends(oauth2.get_current_user)):
+  
 
-  print(new_post)
+  print(current_user_id)
   return {"title": "maxo sall"}
