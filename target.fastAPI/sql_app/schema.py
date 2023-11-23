@@ -40,6 +40,7 @@ class UserLogin(UserCreate):
 class UserOutput(UserBase):
   created_at: Optional[datetime] = None
   updated_at: Optional[datetime] = None
+  id :int
 
   class Config:
     from_attributes = True

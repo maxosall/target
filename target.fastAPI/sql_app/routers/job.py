@@ -1,5 +1,4 @@
 from fastapi import Depends, Response, status, HTTPException, APIRouter
-from http.client import HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
 from .. import models, schema, oauth2
@@ -22,24 +21,24 @@ def create_job(job: schema.JobCreate, db: Session=Depends(get_db),
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def deflete_job(id:int, db: Session= Depends(get_db), 
                 current_user: int = Depends(oauth2.get_current_user)):
-  job = db.query(models.Job).filter(models.Job.Id == id).first()
-
+  job_query = db.query(models.Job).filter(models.Job.id == id)
+  job = job_query.first()
   if job == None:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
                         detail=f"Job with id: ({id}) does not exist")
   
-  if job.user_id == current_user.id:
+  if job.user_id != current_user.id:
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
-                        detail=f"Not authorized to perform the requested action")
+                        detail= "Not authorized to perform the requested action")
 
-  job.delete(Synchronize_seasion = False)
+  job_query.delete(synchronize_session = False)
   db.commit()
   return Response(status_code = status.HTTP_202_ACCEPTED)
 
 @router.put("/", status_code=status.HTTP_201_CREATED, response_model=schema.JobOutput)
 def update_job(updated_job: schema.JobCreate, db: Session=Depends(get_db),
           current_user:int= Depends(oauth2.get_current_user)):
-  job = db.query(models.Job).filter(models.Job.Id == id).first()
+  job = db.query(models.Job).filter(models.Job.id == id).first()
 
   if job == None:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
@@ -47,9 +46,9 @@ def update_job(updated_job: schema.JobCreate, db: Session=Depends(get_db),
   
   if job.user_id == current_user.id:
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
-                        detail=f"Not authorized to perform the requested action")
+                        detail="Not authorized to perform the requested action")
 
-  job.update(updated_job.dict(), Synchronize_seasion= False)
+  job.update(updated_job.dict(), synchronize_session= False)
   db.commit()
   return job
 

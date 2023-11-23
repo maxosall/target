@@ -89,7 +89,7 @@ class Job(Base):
   decription = Column(String, nullable=False)
   min_salary = Column(Float, nullable=True)
   max_salary = Column(Float, nullable=True)
-  user_id = Column(Integer, ForeignKey("users.id"))
+  user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
   # job_type = Column(Enum(JobType), default=JobType.FULLTIME)
   # salary_type = Column(Enum(SalaryType))
   users = relationship("User", back_populates="jobs")
