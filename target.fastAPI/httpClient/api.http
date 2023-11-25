@@ -1,15 +1,21 @@
 
 
 
-# GET  http://127.0.0.1:8000/users HTTP/1.1
+GET http://127.0.0.1:8000/ HTTP/1.1
+Content-Type: application/json
 
 
+###
+GET http://127.0.0.1:8000/users/  HTTP/1.1
+Content-Type: application/json
+
+###
 POST http://127.0.0.1:8000/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "superman@gmail.com",
-  "password": "superman"
+  "email": "spiderman@gmail.com",
+  "password": "spiderman"
 }
 
 ###
@@ -17,20 +23,26 @@ POST http://127.0.0.1:8000/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "superman@gmail.com",
-  "password": "superman"
+  "email": "spiderman@gmail.com",
+  "password": "spiderman"
 }
 
 
 ###
 POST http://127.0.0.1:8000/users/profile HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDA5MDg4MDJ9.dvO68RC_9U98Yg5-s5KjvogGJP57-m8wFzifupDeJAs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5MTg0MTB9.20n336EagdPjMptV4aTaKo8nItMGHE_keX4j5mAzrrs
 Content-Type: application/json
 
 {
-  "first_name":"maxo",
-  "last_name":"sall",
-  "phone_number": "77 325 45 55",
-  "address": "dakar",
-  "resume":" this me .."
+  "first_name":"nancy",
+  "last_name":"fay",
+  "phone_number": "77 739 45 56",
+  "address": "mobur",
+  "resume":" this nancy."
 }
+
+
+###
+GET http://127.0.0.1:8000/users/profile/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5MTg0MTB9.20n336EagdPjMptV4aTaKo8nItMGHE_keX4j5mAzrrs
+Content-Type: application/json

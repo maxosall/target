@@ -49,3 +49,21 @@ def create_profile(profile: schema.ProfileCreate, db: Session = Depends(database
   db.commit()
   db.refresh(new_user_profile)
   return new_user_profile
+
+
+
+@router.get("/profile/{profile_id}", response_model=schema.ProfileDetails)
+def read_profile(profile_id: int, db: Session = Depends(database.get_db), 
+                 current_user: int = Depends(oauth2.get_current_user)):
+  profile = db.query(models.Profile).filter(models.Profile.id == profile_id 
+                                            and models.Profile.user_id == current_user.id).first()
+
+  if not profile:
+    raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
+                        detail = "Profile with id ({profile_id}) does not exist.")
+  
+  if profile.user_id != current_user.id:
+    raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
+                        detail = "Not authorized to perform the requested action")
+  return profile
+

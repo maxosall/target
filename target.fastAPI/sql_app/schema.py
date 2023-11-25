@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
 from pydantic import BaseModel, EmailStr
 
 class Token(BaseModel):
@@ -13,28 +13,6 @@ class Post(BaseModel):
   title: str
   content: str
 
-
-
-
-
-
-#? --------- *> PROFILE'S SCHEMA <* --------
-class ProfileBase(BaseModel):
-  first_name: str
-  last_name: str
-  phone_number: str
-  address: Optional[str]
-  resume: Optional[str]
-   
-
-class ProfileCreate(ProfileBase):
-  pass
-
-
-class ProfileOutput(ProfileCreate):
-  created_at : Optional[datetime] = None
-  updated_at : Optional[datetime] = None
-  
 
 
 
@@ -79,3 +57,31 @@ class UserOutput(UserBase):
   class Config:
     from_attributes = True
 
+
+
+
+
+#? --------- *> PROFILE'S SCHEMA <* --------
+class ProfileBase(BaseModel):
+  first_name: str
+  last_name: str
+  phone_number: str
+  address: Optional[str]
+  resume: Optional[str]
+   
+
+class ProfileCreate(ProfileBase):
+  pass
+
+
+class ProfileOutput(ProfileCreate):
+  created_at : Optional[datetime] = None
+  updated_at : Optional[datetime] = None
+  
+
+class ProfileDetails(ProfileOutput):
+  # jobs: List["JobOutput"]
+  user: UserOutput
+
+  class Config:
+    from_attributes = True

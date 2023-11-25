@@ -7,7 +7,8 @@ router = APIRouter(
   tags = ["jobs"]
 )
 
-@router.post("/", status_code = status.HTTP_201_CREATED, response_model = schema.JobOutput)
+@router.post("/", status_code = status.HTTP_201_CREATED, 
+             response_model = schema.JobOutput)
 def create_job(job: schema.JobCreate, db: Session=Depends(database.get_db),
           current_user: int = Depends(oauth2.get_current_user)):
   
@@ -21,8 +22,8 @@ def create_job(job: schema.JobCreate, db: Session=Depends(database.get_db),
 @router.delete("/{id}", status_code = status.HTTP_204_NO_CONTENT)
 async def delete_job(id: int, db: Session = Depends(database.get_db), 
                 current_user: int = Depends(oauth2.get_current_user)):
-  job_query = await db.query(models.Job).filter(models.Job.id == id)
-  job = await job_query.first()
+  job_query = db.query(models.Job).filter(models.Job.id == id)
+  job = job_query.first()
   if job == None:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
                         detail = f"Job with id: ({id}) does not exist")
@@ -31,26 +32,26 @@ async def delete_job(id: int, db: Session = Depends(database.get_db),
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
                         detail = "Not authorized to perform the requested action")
 
-  await job_query.delete(synchronize_session = False)
-  await db.commit()
+  job_query.delete(synchronize_session = False)
+  db.commit()
   return Response(status_code = status.HTTP_202_ACCEPTED)
 
 
 @router.put("/", status_code = status.HTTP_201_CREATED, response_model = schema.JobOutput)
 async def update_job(updated_job: schema.JobCreate, db: Session = Depends(database.get_db),
           current_user: int = Depends(oauth2.get_current_user)):
-  job = await db.query(models.Job).filter(models.Job.id == id).first()
+  job = db.query(models.Job).filter(models.Job.id == id).first()
 
   if job == None:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
                         detail = f"Job with id: ({id}) does not exist")
   
-  if job.user_id == current_user.id:
+  if job.user_id != current_user.id:
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
                         detail = "Not authorized to perform the requested action")
 
-  await job.update(updated_job.model_dump(), synchronize_session= False)
-  await db.commit()
+  job.update(updated_job.model_dump(), synchronize_session= False)
+  db.commit()
   return job
 
 
