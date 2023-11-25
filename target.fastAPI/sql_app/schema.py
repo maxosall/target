@@ -13,6 +13,32 @@ class Post(BaseModel):
   title: str
   content: str
 
+
+
+
+
+
+#? --------- *> PROFILE'S SCHEMA <* --------
+class ProfileBase(BaseModel):
+  first_name: str
+  last_name: str
+  phone_number: str
+  address: Optional[str]
+  resume: Optional[str]
+   
+
+class ProfileCreate(ProfileBase):
+  pass
+
+
+class ProfileOutput(ProfileCreate):
+  created_at : Optional[datetime] = None
+  updated_at : Optional[datetime] = None
+  
+
+
+
+#? --------- *> JOB'S SCHEMA <* --------
 class JobBase(BaseModel):
   title: str
   decription: str
@@ -23,11 +49,16 @@ class JobBase(BaseModel):
 class JobCreate(JobBase):
   pass
 
+
 class JobOutput(JobBase):
   user_id: int
   created_at: Optional[datetime]=None
   updated_at: Optional[datetime]= None
 
+
+
+
+#? --------- *> USER'S SCHEMA <* --------
 class UserBase(BaseModel):
   email: EmailStr
 
@@ -35,8 +66,11 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
   password: str
 
+
 class UserLogin(UserCreate):
   pass
+
+
 class UserOutput(UserBase):
   created_at: Optional[datetime] = None
   updated_at: Optional[datetime] = None
@@ -45,10 +79,3 @@ class UserOutput(UserBase):
   class Config:
     from_attributes = True
 
-class Profile(BaseModel):
-  first_name : str 
-  last_name : str 
-  user_id : int
-  address : str 
-  resume : str     
-  

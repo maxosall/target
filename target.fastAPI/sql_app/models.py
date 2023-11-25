@@ -18,7 +18,7 @@ class User(Base):
   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
   
   # group = relationship('Group', back_populates='users') 
-  # profile = relationship("Profile", uselist=False, back_populates="user")
+  profile = relationship("Profile", uselist=False, back_populates="user")
 
 
 class Group(Base):
@@ -45,11 +45,13 @@ class Profile(Base):
   address = Column(String)
   resume = Column(String)
 
-  # user_id = Column(Integer, ForeignKey("users.id"))
-  # user = relationship("User", back_populates="profile")
+  user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+  user = relationship("User", back_populates="profile")
 
-#   # user = relationship('user')
-#   user = relationship('User', back_populates='profile')
+  created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=func.now())
+  updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
+
+  
 # class Role(Base):
 #   __tablename__ = 'roles'
 #   id = Column(Integer, primary_key=True, index=True)
