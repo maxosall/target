@@ -4,14 +4,14 @@ from .. import crud, schema, database, oauth2, models
 
 router =APIRouter(
   prefix="/users",
-  tags=["users"]
+  tags=["Users"]
 )
 
 
 @router.get("/", response_model=list[schema.UserOutput])
 async def read_users(db: Session = Depends(database.get_db)):
   users = crud.get_users(db)
-  return users
+  return  users
 
 
 @router.get("/{user_id}", response_model=schema.UserOutput)
@@ -36,15 +36,15 @@ def create_user(user: schema.UserCreate, db: Session = Depends(database.get_db))
 def create_profile(profile: schema.ProfileCreate, db: Session = Depends(database.get_db),
                    current_user: int= Depends(oauth2.get_current_user)):   
   
-  user_profile = db.query(models.Profile).filter(models.Profile.user_id == current_user.id)
+  user_profile = db.query(models.Profile).filter(models.Profile.user_id == current_user.id).first()
   
   # if current_user already have a profile
-  if user_profile.first():
+  if user_profile:
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
-                        detail = "Not authorized to perform the requested action")
+                        detail = "Not authorized to create another profile, you already has one")
   
   # if current_user has not has a profile yet
-  new_user_profile = models.Profile(user_id = current_user.id,**profile.model_dump())
+  new_user_profile = models.Profile(user_id = current_user.id, **profile.model_dump())
   db.add(new_user_profile)
   db.commit()
   db.refresh(new_user_profile)
@@ -53,17 +53,18 @@ def create_profile(profile: schema.ProfileCreate, db: Session = Depends(database
 
 
 @router.get("/profile/{profile_id}", response_model=schema.ProfileDetails)
-def read_profile(profile_id: int, db: Session = Depends(database.get_db), 
+async def read_profile(profile_id: int, db: Session = Depends(database.get_db), 
                  current_user: int = Depends(oauth2.get_current_user)):
   profile = db.query(models.Profile).filter(models.Profile.id == profile_id 
                                             and models.Profile.user_id == current_user.id).first()
 
   if not profile:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
-                        detail = "Profile with id ({profile_id}) does not exist.")
+                        detail = f"Profile with id ({profile_id}) does not exist.")
   
   if profile.user_id != current_user.id:
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
                         detail = "Not authorized to perform the requested action")
   return profile
+
 

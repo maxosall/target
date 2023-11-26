@@ -4,7 +4,7 @@ from .. import models, schema, database, oauth2
 
 router = APIRouter(
   prefix = "/jobs",
-  tags = ["jobs"]
+  tags = ["Jobs"]
 )
 
 @router.post("/", status_code = status.HTTP_201_CREATED, 
@@ -37,11 +37,12 @@ async def delete_job(id: int, db: Session = Depends(database.get_db),
   return Response(status_code = status.HTTP_202_ACCEPTED)
 
 
-@router.put("/", status_code = status.HTTP_201_CREATED, response_model = schema.JobOutput)
-async def update_job(updated_job: schema.JobCreate, db: Session = Depends(database.get_db),
+@router.put("/{id}", status_code = status.HTTP_201_CREATED, response_model = schema.JobOutput)
+def update_job(id:int, updated_job: schema.JobCreate, db: Session = Depends(database.get_db),
           current_user: int = Depends(oauth2.get_current_user)):
-  job = db.query(models.Job).filter(models.Job.id == id).first()
-
+  job_query = db.query(models.Job).filter(models.Job.id == id and job.user_id == current_user.id)
+  job = job_query.first()
+  print(f"SQL_QUERY:: {job}")
   if job == None:
     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, 
                         detail = f"Job with id: ({id}) does not exist")
@@ -50,9 +51,9 @@ async def update_job(updated_job: schema.JobCreate, db: Session = Depends(databa
     raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, 
                         detail = "Not authorized to perform the requested action")
 
-  job.update(updated_job.model_dump(), synchronize_session= False)
+  job_query.update(updated_job.model_dump(), synchronize_session= False)
   db.commit()
-  return job
+  return job_query.first()
 
 
   

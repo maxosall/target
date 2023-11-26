@@ -4,8 +4,39 @@
 GET http://127.0.0.1:8000/ HTTP/1.1
 Content-Type: application/json
 
+###
+POST http://127.0.0.1:8000/jobs/  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
+Content-Type: application/json
+
+{
+  "title":"3 accountant",
+  "decription": "we are looking for somebody who is familiar with excel and math",
+  "max_salary": 6000.0,
+  "min_salary": 4500.0
+}
 
 ###
+
+DELETE  http://127.0.0.1:8000/jobs/5/  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
+Content-Type: application/json
+
+
+###
+
+PUT http://127.0.0.1:8000/jobs/5/  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
+Content-Type: application/json
+
+{
+  "title":"12 accountants",
+  "decription": "are you familiar with excel and math, get in touch",
+  "max_salary": 6000.0,
+  "min_salary": 5000.0
+}
+###
+
 GET http://127.0.0.1:8000/users/  HTTP/1.1
 Content-Type: application/json
 
@@ -30,19 +61,19 @@ Content-Type: application/json
 
 ###
 POST http://127.0.0.1:8000/users/profile HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5MTg0MTB9.20n336EagdPjMptV4aTaKo8nItMGHE_keX4j5mAzrrs
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5ODc5Nzd9.G4iDzikzWNT1XYcpAjX78XhNQfNs_sGoc1tB8IvtWD4
 Content-Type: application/json
 
 {
-  "first_name":"nancy",
-  "last_name":"fay",
-  "phone_number": "77 739 45 56",
-  "address": "mobur",
-  "resume":" this nancy."
+  "first_name":"kareen",
+  "last_name":"diop",
+  "phone_number": "65 739 45 34",
+  "address": "dakar",
+  "resume":" this your boy kareem"
 }
 
 
 ###
-GET http://127.0.0.1:8000/users/profile/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5MTg0MTB9.20n336EagdPjMptV4aTaKo8nItMGHE_keX4j5mAzrrs
+GET http://127.0.0.1:8000/users/profile/2 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
 Content-Type: application/json

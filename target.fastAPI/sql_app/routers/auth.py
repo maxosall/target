@@ -5,7 +5,7 @@ from .. import database, schema, crud, utils, oauth2
 
 router =APIRouter(
   prefix = "/auth",
-  tags = ["authentication"]
+  tags = ["Authentication"]
 )
 
 @router.post('/login')

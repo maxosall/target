@@ -17,12 +17,14 @@ class Post(BaseModel):
 
 
 #? --------- *> JOB'S SCHEMA <* --------
-class JobBase(BaseModel):
+class JobBase(BaseModel):  
   title: str
   decription: str
   max_salary: Optional[float] = None
   min_salary: Optional[float] = None
 
+  class Config:
+    from_attributes = True
 
 class JobCreate(JobBase):
   pass
@@ -66,16 +68,17 @@ class ProfileBase(BaseModel):
   first_name: str
   last_name: str
   phone_number: str
-  address: Optional[str]
-  resume: Optional[str]
+  address: Optional[str] = None
+  resume: Optional[str] = None
    
 
 class ProfileCreate(ProfileBase):
-  pass
+  class Config:
+    from_attributes = True
 
 
 class ProfileOutput(ProfileCreate):
-  created_at : Optional[datetime] = None
+  created_at : datetime
   updated_at : Optional[datetime] = None
   
 

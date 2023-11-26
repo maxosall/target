@@ -29,7 +29,7 @@ class Group(Base):
   # user_id = Column(Integer, ForeignKey('users.id'))
   # users=relationship('User', back_populates='group')
 
-  create_at = Column(TIMESTAMP(timezone=True), nullable=False, default=text('now()'))
+  created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=func.now())
   updated_at = Column(TIMESTAMP(timezone=True), onupdate=func.now())
 
 # class Permission(Base):
