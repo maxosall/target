@@ -68,3 +68,23 @@ async def read_profile(profile_id: int, db: Session = Depends(database.get_db),
   return profile
 
 
+@router.put("/profile/{id}", status_code=status.HTTP_201_CREATED, response_model=schema.ProfileOutput)
+def update_profile(id: int, updated_profile: schema.ProfileCreate, 
+                   db: Session= Depends(database.get_db),
+                   current_user: int = Depends(oauth2.get_current_user)):
+  current_profile = db.query(models.Profile).filter(models.Profile.id == id and 
+                                                    models.Profile.user_id == current_user.id)
+  print(f"SQL_QUERY: {current_profile}")
+  profile = current_profile.first()
+  
+  if profile == None:
+    raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,
+                        detail = f"profile with id: ({id}) does not exist.")
+  
+  if profile.user_id != current_user.id:
+    raise HTTPException(status_code = status.HTTP_403_FORBIDDEN,
+                        detail =f"Not Authorized to perform the requested action")
+  
+  current_profile.update(updated_profile.model_dump(), synchronize_session= False)
+  db.commit()
+  return current_profile.first()

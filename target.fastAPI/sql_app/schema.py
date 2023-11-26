@@ -73,8 +73,9 @@ class ProfileBase(BaseModel):
    
 
 class ProfileCreate(ProfileBase):
-  class Config:
-    from_attributes = True
+  # class Config:
+  #   from_attributes = True
+  pass
 
 
 class ProfileOutput(ProfileCreate):

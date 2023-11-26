@@ -26,7 +26,7 @@ Content-Type: application/json
 ###
 
 PUT http://127.0.0.1:8000/jobs/5/  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTg2NTd9.YBctoSuHqwF3r-t6EtGdrZl2JW21UiBTum_is0iWgtQ
 Content-Type: application/json
 
 {
@@ -72,8 +72,20 @@ Content-Type: application/json
   "resume":" this your boy kareem"
 }
 
+###
+PUT  http://127.0.0.1:8000/users/profile/2  HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDEwMDM5OTJ9.mRx49AmgosXjv1QLdT3NbI1_nbGXTyguMFcFCrAih-0
+Content-Type: application/json
+
+{
+ "first_name": "nancy",
+  "last_name": "kane",
+  "phone_number": "77 739 48 56",
+  "address": "dias",
+  "resume": "this nancy."
+}
 
 ###
 GET http://127.0.0.1:8000/users/profile/2 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTY2NTF9.nnU-22oSxzQcJOznP5vRtoHgFKIf6EggniwJbehm9Pw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDA5OTg2NTd9.YBctoSuHqwF3r-t6EtGdrZl2JW21UiBTum_is0iWgtQ
 Content-Type: application/json
